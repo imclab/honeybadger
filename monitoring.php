@@ -37,13 +37,18 @@
 		    fb_oauth_token: response.session.access_token
 		  }, function(data) {
 		    var res = $.parseJSON(data);
-        var results = res.photos[0].tags[0];
-        
-        var uid = results.uids[0].uid.replace("@facebook.com","");
-        
-        FB.api('/' + uid, function(fb_user) {
-          hit_twilio(response.session.uid, fb_user.name, file.filename);
-        })
+		    
+		    if(res.photos[0].tags.length > 0) {
+		      var results = res.photos[0].tags[0];
+
+          var uid = results.uids[0].uid.replace("@facebook.com","");
+
+          FB.api('/' + uid, function(fb_user) {
+            hit_twilio(response.session.uid, fb_user.name, file.filename);
+          })
+		    } else {
+		      console.log('nobody in the frame')
+		    }
 		  })
 		})
 	}
@@ -67,14 +72,13 @@
 	
 	$(function() {
 	  webcam.set_hook('onCameraStatus', function(status) {
-	    console.log(status);
+	    if(status == 'allow') setInterval(begin_checking, interval_secs * 1000);
 	  })
 	})
 	
-	function honeybadger_ready() {
-	  setTimeout(function() {
-	    webcam.snap();
-	  }, 1000)
+	function begin_checking() {
+	  console.log('snap')
+	  webcam.snap();
 	}
   </script>
 </head>

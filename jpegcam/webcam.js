@@ -168,7 +168,6 @@ window.webcam = {
 	},
 	
 	flash_notify: function(type, msg) {
-	  console.log(type, msg);
 		// receive notification from flash about event
 		switch (type) {
 			case 'flashLoadComplete':
@@ -191,7 +190,6 @@ window.webcam = {
 				break;
 			
 			case 'status':
-			  console.log('holy crap it worked')
 			  this.fire_hook('onCameraStatus', msg.toString());
 			  break;
 
