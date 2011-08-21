@@ -70,6 +70,7 @@
           var img = $("<img>").attr("src",memed);
           $("#memed").append(img);
           alert('YO ' + name.toUpperCase() + ' YOU WON $10!!');
+          $.post("/a/honeybadger/save_aviary.php", { name: name, image_url: memed });
         }
       });
     });
