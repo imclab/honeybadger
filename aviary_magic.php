@@ -11,13 +11,13 @@ $troll_name = $_POST['troll_name'];
 
 $uploadResponse = $aviaryfx->upload($image_url);
 $aviary_image = $uploadResponse['url'];
+echo($aviary_image);
 
 $backgroundcolor = "0xFFFFFFFF";
 $quality = "100";
 $scale = "1";
-$size = getimagesize($image_url);
-$width = $size[0];
-$height = $size[1];
+$width = 960;
+$height = 720;
 $renderparameters = array (
   "parameter" => array	(
      array("id" => "Text Top", "value" => "gtfo " . $troll_name . "!!" ),
