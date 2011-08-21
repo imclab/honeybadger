@@ -66,20 +66,10 @@
 	}
 	
 	$(function() {
-    check_time();
+	  webcam.set_hook('onCameraStatus', function(status) {
+	    console.log(status);
+	  })
 	})
-	
-	function check_time() {
-    if(total_secs == 0) {
-      $("#cam").css("top","-1000px");
-      $("#instructions").remove();
-	    honeybadger_ready();
-    } else {
-      $("#secs").html(total_secs);
-      total_secs--;
-      setTimeout(check_time, 1000)
-    }
-  }
 	
 	function honeybadger_ready() {
 	  setTimeout(function() {
