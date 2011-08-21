@@ -100,7 +100,7 @@
           var br1 = $("<br>");
           var br2 = $("<br>");
           var a = $("<a>").attr("href","http://www.facebook.com/profile.php?id=" + troll_id).attr("target","_blank").html("Not " + name + "?");
-          $("#memed").append(img,br1,br2,a);
+          $("#memed").append(a,br1,br2,img);
           
           $("body").css("background","none");
           
