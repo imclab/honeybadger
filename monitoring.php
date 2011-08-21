@@ -66,6 +66,8 @@
 	}
 	
 	$(function() {
+	  console.log('here');
+	  console.log(webcam);
 	  webcam.set_hook('onCameraStatus', function(status) {
 	    console.log(status);
 	  })
