@@ -1,7 +1,18 @@
 <?php
     require "twilio.php";
     require "connection.php";
-    
+
+    $user_id = $_POST['fb_user_id'];
+    $names = $_POST['names'];
+    print_r($names);
+    $query = "SELECT * FROM users WHERE (id=$user_id)";
+    $res = mysql_query($query);
+
+    $phone;
+    while($row = mysql_fetch_array($res, MYSQL_NUM)){
+      $phone = $row[2];
+  	}
+
  
     // twilio REST API version
     $ApiVersion = "2010-04-01";
@@ -11,26 +22,21 @@
 
     // make an associative array of people we know, indexed by phone number
     $people = array(
-        "0"=>"+17322757699",
-        "1"=>"+17322757699",
+        "0"=>"+1".$phone,
     );
 
     // iterate over all our friends
   $counter = 0;
     foreach ($people as $index => $number) {
-
-        // Send a new outgoinging SMS by POSTing to the SMS resource */
               $response = $client->request("/$ApiVersion/Accounts/$AccountSid/SMS/Messages", 
                    "POST", array(
                    "To" => $number,
-                   "From" => "732-662-2692",
-                   "Body" => "It works, sire."
+                   "From" => "7326622692",
+                   "Body" => "Don\'t shoot the messenger, but I believe that one of either " . $names . " is messing with yo' shit!"
                ));
                if($response->IsError)
                   echo "Error: {$response->ErrorMessage}";
               else
   			$counter++;
-            // echo "Sent message to $name";
     }
-    echo $counter;
 ?>
