@@ -38,7 +38,7 @@
       fb_user_id: fb_user_id,
       name: name
     }, function(data) {
-      $.post("/a/honeybadger/aviary_magic.php", { image_url: filename, troll_name: name }, function(res) {
+      $.post("/a/honeybadger/aviary_magic.php", { filename: filename, troll_name: name }, function(res) {
         console.log(res);
       });
     });
