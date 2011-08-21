@@ -26,7 +26,6 @@
   </script>
 </head>
 <body>
-  
   <script language="JavaScript">
 		document.write( webcam.get_html(320, 240) );
 	</script>
@@ -34,7 +33,8 @@
 	<button id="configure">configure</button>
 	<button id="take-pic">take pic</button>
 
-
+<br>
+<fb:login-button perms="user_photos, friends_photos, offline_access">
 <div id="fb-root"></div>
 <script>
   window.fbAsyncInit = function() {
