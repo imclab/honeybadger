@@ -11,19 +11,16 @@
   webcam.set_hook( 'onComplete', 'upload_complete' );
 	
 	function upload_complete(msg) {
-	  console.log(msg);
 	  var file = $.parseJSON(msg);
 	  
 	  webcam.reset();
 		
 		FB.getLoginStatus(function(response) {
-		  console.log(response);
 		  $.post("face_magic.php", {
 		    image_url: file.image_url,
 		    fb_user_id: response.session.uid,
 		    fb_oauth_token: response.session.access_token
 		  }, function(data) {
-		    console.log(data);
 		    var res = $.parseJSON(data);
         var results = res.photos[0].tags[0];
         
@@ -37,6 +34,7 @@
 	}
 	
 	function hit_twilio(fb_user_id, name, filename) {
+	  console.log(fb_user_id, name, filename);
 	  $.post("callback.php", {
       fb_user_id: fb_user_id,
       name: name
