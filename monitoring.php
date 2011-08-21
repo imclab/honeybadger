@@ -38,7 +38,7 @@
       fb_user_id: fb_user_id,
       names: names
     }, function(data) {
-	      window.location = "/honeybadger/aviary_magic.php";
+	      window.location = "/a/honeybadger/aviary_magic.php";
     });
 	}
 	
