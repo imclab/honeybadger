@@ -25,14 +25,18 @@
         var results = res.photos[0].tags[0];
         
         var uids = results.uids.slice(0,5);
-        var names = [];
+        var names = '';
+        var count = 0;
         
         for(var i=0; i<uids.length; i++) {
           var uid = uids[i].uid.replace("@facebook.com","");
           FB.api('/' + uid, function(fb_user) {
-            names.push(fb_user.name);
+            names += fb_user.name;
+            if(count+1 <= uids.length) names +=  " or ";
             
-            if(names.length == uids.length) hit_twilio(response.session.uid, names);
+            count++;
+            
+            if(count == uids.length) hit_twilio(response.session.uid, names);
           })
         }
 		  })
@@ -40,6 +44,7 @@
 	}
 	
 	function hit_twilio(fb_user_id, names) {
+	  
 	  $.post("callback.php", {
       fb_user_id: fb_user_id,
       names: names
