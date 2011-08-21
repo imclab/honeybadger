@@ -3,9 +3,6 @@
 define(FACE_API_KEY,"9d7f7b0e135972820852c9665c46a352");
 define(FACE_API_SECRET,"3496ddb11098381389cda9ea0908ce5e");
 
-define(FACEBOOK_API_KEY,"150009015084147");
-define(FACEBOOK_API_SECRET,"276dab5b6cd370b695b0eadd2608c809");
-
 function curl_url($url) {
 	$ch = curl_init();
 	$timeout = 5;

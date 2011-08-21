@@ -1,4 +1,6 @@
 <?php
+define(FACEBOOK_API_KEY,"150009015084147");
+define(FACEBOOK_API_SECRET,"276dab5b6cd370b695b0eadd2608c809");
 include_once("lib/facebook/facebook.php");
 $facebook = new Facebook(array(
   'appId'  => 150009015084147,
