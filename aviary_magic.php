@@ -25,7 +25,7 @@ $renderparameters = array (
   )
 );
 
-$renderResponse = $aviaryfx->render($backgroundcolor, $extension, $quality, $scale, $color, 27, $width, $height, $renderparameters);
+$renderResponse = $aviaryfx->render($backgroundcolor, 'jpg', $quality, $scale, $aviary_image, 27, $width, $height, $renderparameters);
 $memed = $renderResponse['url'];
 
 $res = array();
