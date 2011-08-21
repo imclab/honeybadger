@@ -34,6 +34,7 @@ window.webcam = {
 	hooks: {
 		onLoad: null,
 		onComplete: null,
+		onCameraStatus: null,
 		onError: null
 	}, // callback hook functions
 	
