@@ -65,6 +65,7 @@
           memed = av_magic.memed;
           var img = $("<img>").attr("src",memed);
           $("#memed").append(img);
+          console.log('clear interval')
           clearInterval(interval);
           alert('WIN $10!!');
         }
