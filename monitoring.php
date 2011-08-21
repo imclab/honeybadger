@@ -2,21 +2,11 @@
 <html>
 <head>
   <style type="text/css">
-  body {
-    position:relative;
-  }
+  body {position:relative}
   #cam {
-    position:relative;
-    z-index:4;
-  }
-  .white {
-    width:800px;
-    height:800px;
-    background-color:#fff;
     position:absolute;
     top:0;
     left:0;
-    z-index:2;
   }
   #memed {
     position:absolute;
@@ -81,10 +71,10 @@
     //   webcam.snap();
     // })
     webcam.set_hook('onLoad', function() {
-      $("#cam").css("z-index",1);
       setTimeout(function() {
+        $("#cam").css("top","-1000px");
   	    webcam.snap();
-  	  }, 2000)
+  	  }, 4000)
     })
 	})
   </script>
@@ -114,7 +104,6 @@
   }());
 </script>	
 <div id="memed"></div>
-<div class="white"></div>
 </body>
 </html>
 
