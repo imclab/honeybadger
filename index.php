@@ -1,5 +1,5 @@
 <?php
-include_once("../lib/facebook/facebook.php");
+include_once("lib/facebook/facebook.php");
 $facebook = new Facebook(array(
   'appId'  => 150009015084147,
   'secret' => FACEBOOK_API_SECRET,
