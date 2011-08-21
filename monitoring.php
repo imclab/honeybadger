@@ -4,11 +4,7 @@
   <style type="text/css">
   html, body {width:100%;height:100%;}
   body {margin:0;padding:0;position:relative}
-  #cam {
-    position:absolute;
-    top:80px;
-    left:0;
-  }
+  #cam,
   #memed {
     position:absolute;
     top:50%;
@@ -21,7 +17,7 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script type="text/javascript" src="jpegcam/webcam.js"></script>
   <script type="text/javascript">
-  var total_secs = 15;
+  var interval_secs = 15;
   
   webcam.set_api_url( 'jpegcam/upload.php' );
 	webcam.set_quality( 100 );
@@ -40,7 +36,6 @@
 		    fb_user_id: response.session.uid,
 		    fb_oauth_token: response.session.access_token
 		  }, function(data) {
-		    console.log(data);
 		    var res = $.parseJSON(data);
         var results = res.photos[0].tags[0];
         
@@ -71,9 +66,6 @@
 	}
 	
 	$(function() {
-    // $("#take-pic").click(function() {
-    //   webcam.snap();
-    // })
     check_time();
 	})
 	
@@ -97,8 +89,6 @@
   </script>
 </head>
 <body>
-  
-  <h1 id="instructions">you have <span id="secs"></span> to enable your video</h1>
   
   <div id="cam">
   <script language="JavaScript">

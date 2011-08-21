@@ -187,6 +187,10 @@ window.webcam = {
 				// and pass raw API script results to function
 				this.fire_hook('onComplete', msg.toString());
 				break;
+			
+			case 'status':
+			  this.fire_hook('onCameraStatus', msg.toString());
+			  break;
 
 			default:
 				// catch-all, just in case
