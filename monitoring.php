@@ -146,7 +146,6 @@
              xfbml: true});
     
    FB.getLoginStatus(function(response) {
-	    console.log(response)
 	    if(!response.session) {
 	      window.location = "index.php";
      } else {
