@@ -44,7 +44,7 @@
 	}
 	
 	function hit_twilio(fb_user_id, names) {
-	  
+	  console.log(names)
 	  $.post("callback.php", {
       fb_user_id: fb_user_id,
       names: names
