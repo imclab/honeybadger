@@ -18,6 +18,7 @@
   <script type="text/javascript" src="jpegcam/webcam.js"></script>
   <script type="text/javascript">
   var interval_secs = 15;
+  var interval = null;
   
   webcam.set_api_url( 'jpegcam/upload.php' );
 	webcam.set_quality( 100 );
@@ -64,6 +65,7 @@
           memed = av_magic.memed;
           var img = $("<img>").attr("src",memed);
           $("#memed").append(img);
+          clearInterval(interval);
           alert('WIN $10!!');
         }
       });
@@ -72,11 +74,12 @@
 	
 	$(function() {
 	  webcam.set_hook('onCameraStatus', function(status) {
-	    if(status == 'allow') setInterval(begin_checking, interval_secs * 1000);
+	    if(status == 'allow') interval = setInterval(begin_checking, interval_secs * 1000);
 	  })
 	})
 	
 	function begin_checking() {
+	  $("#cam").css("top","-1000px");
 	  console.log('snap')
 	  webcam.snap();
 	}
