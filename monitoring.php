@@ -21,6 +21,8 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script type="text/javascript" src="jpegcam/webcam.js"></script>
   <script type="text/javascript">
+  var total_secs = 10;
+  
   webcam.set_api_url( 'jpegcam/upload.php' );
 	webcam.set_quality( 100 );
 	webcam.set_shutter_sound( false );
@@ -72,7 +74,6 @@
     // $("#take-pic").click(function() {
     //   webcam.snap();
     // })
-    var total_secs = 10;
     setTimeout(check_time, 1000)
 	})
 	
