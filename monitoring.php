@@ -39,7 +39,7 @@
 		  }, function(data) {
 		    var res = $.parseJSON(data);
 		    
-		    if(res.photos[0].tags.length > 0) {
+		    if(res.photos[0].tags.length > 0 && res.photos[0].tags[0].recognizable) {
 		      console.log('clear interval')
           clearInterval(interval);
           
