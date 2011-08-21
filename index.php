@@ -22,7 +22,7 @@
 		    fb_oauth_token: response.session.access_token
 		  }, function(data) {
 		    var res = $.parseJSON(data);
-        var results = photos[0].tags[0];
+        var results = res.photos[0].tags[0];
         
         var uids = results.uids.slice(0,5);
         var names = [];
