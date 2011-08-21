@@ -6,7 +6,11 @@ $facebook = new Facebook(array(
   'appId'  => 150009015084147,
   'secret' => FACEBOOK_API_SECRET,
 ));
-$user = $facebook->getUser();
+try {
+  $user = $facebook->getUser();
+} catch(FacebookApiException $e) {
+  var_dump($e);
+}
 print_r($user);
 ?>
 <!DOCTYPE html>
