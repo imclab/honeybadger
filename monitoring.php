@@ -31,7 +31,9 @@
     position:absolute;
     left:50%;
     top:20px;
-    margin-left:-150px;
+    margin-left:-180px;
+    text-align:center;
+    padding:0 30px;
   }
   </style>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
