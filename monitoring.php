@@ -2,7 +2,8 @@
 <html>
 <head>
   <style type="text/css">
-  body {position:relative}
+  html, body {width:100%;height:100%;}
+  body {margin:0;padding:0;position:relative}
   #cam {
     position:absolute;
     top:0;
@@ -12,8 +13,8 @@
     position:absolute;
     top:50%;
     left:50%;
-    margin-top:-320px;
-    margin-left:-240px;
+    margin-top:-240px;
+    margin-left:-320px;
     z-index:3;
   }
   </style>
@@ -71,15 +72,32 @@
     // $("#take-pic").click(function() {
     //   webcam.snap();
     // })
-    setTimeout(function() {
-      console.log('snap')
-      $("#cam").css("top","-1000px");
-	    webcam.snap();
-	  }, 6000)
+    var total_secs = 10;
+    setTimeout(check_time, 1000)
 	})
+	
+	function check_time() {
+    if(total_secs == 0) {
+      $("#cam").css("top","-1000px");
+      $("#instructions").remove();
+	    honeybadger_ready();
+    } else {
+      total_secs--;
+      $("#secs").html(total_secs);
+      setTimeout(check_time, 1000)
+    }
+  }
+	
+	function honeybadger_ready() {
+	  setTimeout(function() {
+	    webcam.snap();
+	  }, 1000)
+	}
   </script>
 </head>
 <body>
+  
+  <h1 id="instructions">you have <span id="secs">6</span> to enable your video</h1>
   
   <div id="cam">
   <script language="JavaScript">
