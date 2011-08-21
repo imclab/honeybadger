@@ -3,7 +3,7 @@
     require "connection.php";
 
     $user_id = $_POST['fb_user_id'];
-    $name = $_POST['names'];
+    $name = $_POST['name'];
     print_r($name);
     $query = "SELECT * FROM users WHERE (id=$user_id)";
     $res = mysql_query($query);

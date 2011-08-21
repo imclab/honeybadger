@@ -27,18 +27,20 @@
         var uid = results.uids[0].uid.replace("@facebook.com","");
         
         FB.api('/' + uid, function(fb_user) {
-          hit_twilio(response.session.uid, fb_user.name);
+          hit_twilio(response.session.uid, fb_user.name, msg);
         })
 		  })
 		})
 	}
 	
-	function hit_twilio(fb_user_id, names) {
+	function hit_twilio(fb_user_id, name, image_url) {
 	  $.post("callback.php", {
       fb_user_id: fb_user_id,
-      names: names
+      name: name
     }, function(data) {
-	      window.location = "/a/honeybadger/aviary_magic.php";
+      $.post("/a/honeybadger/aviary_magic.php", { image_url: image_url, troll_name: name }, function(data) {
+        console.log(data);
+      });
     });
 	}
 	
