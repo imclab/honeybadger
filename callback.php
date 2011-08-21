@@ -32,11 +32,8 @@
                    "POST", array(
                    "To" => $number,
                    "From" => "7326622692",
-                   "Body" => "Don\'t shoot the messenger, but I believe that ". $name ." is messing with yo' shit!"
+                   "Body" => "Don't shoot the messenger, but I believe that ". $name ." is messing with yo' shit!"
                ));
-               if($response->IsError)
-                  echo "Error: {$response->ErrorMessage}";
-              else
-  			$counter++;
+               if($response->IsError) echo "Error: {$response->ErrorMessage}";
     }
 ?>
