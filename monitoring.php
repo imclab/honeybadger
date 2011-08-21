@@ -7,11 +7,12 @@
   }
   #cam {
     position:relative;
-    z-index:1;
+    z-index:4;
   }
   .white {
     width:800px;
     height:800px;
+    background-color:#fff;
     position:absolute;
     top:0;
     left:0;
@@ -79,9 +80,11 @@
     // $("#take-pic").click(function() {
     //   webcam.snap();
     // })
-	  setTimeout(function() {
-	    webcam.snap();
-	  }, 2000)
+    webcam.set_hook('onLoad', function() {
+      setTimeout(function() {
+  	    webcam.snap();
+  	  }, 2000)
+    })
 	})
   </script>
 </head>
