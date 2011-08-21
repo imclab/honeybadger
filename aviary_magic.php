@@ -1,7 +1,7 @@
 <?php
 
 // aviary magic to create bw version
-require_once("../lib/AviaryFX.php");
+require_once("lib/AviaryFX.php");
 $api_key = "a29051063";
 $api_secret = "9a29165c4";
 $aviaryfx = new AviaryFX($api_key, $api_secret);
