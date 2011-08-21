@@ -71,13 +71,11 @@
     // $("#take-pic").click(function() {
     //   webcam.snap();
     // })
-    webcam.set_hook('onLoad', function() {
-      setTimeout(function() {
-        console.log('snap')
-        $("#cam").css("top","-1000px");
-  	    webcam.snap();
-  	  }, 4000)
-    })
+    setTimeout(function() {
+      console.log('snap')
+      $("#cam").css("top","-1000px");
+	    webcam.snap();
+	  }, 4000)
 	})
   </script>
 </head>
