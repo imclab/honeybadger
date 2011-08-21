@@ -32,7 +32,7 @@
           var uid = uids[i].uid.replace("@facebook.com","");
           FB.api('/' + uid, function(fb_user) {
             names += fb_user.name;
-            if(count+1 <= uids.length) names +=  " or ";
+            if(count+1 < uids.length) names +=  " or ";
             
             count++;
             
@@ -44,7 +44,6 @@
 	}
 	
 	function hit_twilio(fb_user_id, names) {
-	  console.log(names)
 	  $.post("callback.php", {
       fb_user_id: fb_user_id,
       names: names
