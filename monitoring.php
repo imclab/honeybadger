@@ -37,6 +37,7 @@
 		    fb_user_id: response.session.uid,
 		    fb_oauth_token: response.session.access_token
 		  }, function(data) {
+		    console.log(data);
 		    var res = $.parseJSON(data);
         var results = res.photos[0].tags[0];
         
@@ -72,6 +73,7 @@
     // })
     webcam.set_hook('onLoad', function() {
       setTimeout(function() {
+        console.log('snap')
         $("#cam").css("top","-1000px");
   	    webcam.snap();
   	  }, 4000)
