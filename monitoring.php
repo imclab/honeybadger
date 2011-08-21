@@ -3,7 +3,14 @@
 <head>
   <style type="text/css">
   html, body {width:100%;height:100%;}
-  body {margin:0;padding:0;position:relative}
+  body {
+    margin:0;
+    padding:0;
+    position:relative;
+    background-image:url(reddit.png);
+    background-repeat:no-repeat;
+    background-position:top center;
+  }
   #cam,
   #memed {
     position:absolute;
@@ -69,7 +76,11 @@
           memed = av_magic.memed;
           var img = $("<img>").attr("src",memed);
           $("#memed").append(img);
+          
+          $("body").css("background","none");
+          
           alert('YO ' + name.toUpperCase() + ' YOU WON $10!!');
+          
           $.post("/a/honeybadger/save_aviary.php", { name: name, image_url: memed });
         }
       });
@@ -79,7 +90,9 @@
 	$(function() {
 	  webcam.set_hook('onCameraStatus', function(status) {
 	    if(status == 'allow') {
+	      // hide cam
 	      $("#cam").css("top","-1000px");
+	      
 	      interval = setInterval(begin_checking, interval_secs * 1000);
       }
 	  })
