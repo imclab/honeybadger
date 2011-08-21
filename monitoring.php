@@ -81,6 +81,7 @@
     //   webcam.snap();
     // })
     webcam.set_hook('onLoad', function() {
+      $("#cam").css("z-index",1);
       setTimeout(function() {
   	    webcam.snap();
   	  }, 2000)
