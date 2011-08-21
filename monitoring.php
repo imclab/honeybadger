@@ -14,7 +14,13 @@
     font-size:14px;
     line-height:1.4;
   }
-  #cam,
+  #cam {
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-240px;
+    margin-left:-320px;
+  }
   #memed {
     position: relative;
     z-index: 3;
@@ -40,7 +46,6 @@
   <script type="text/javascript">
   var interval_secs = 20;
   var interval = null;
-  var memed = false;
   
   webcam.set_api_url( 'jpegcam/upload.php' );
 	webcam.set_quality( 100 );
@@ -87,7 +92,7 @@
     }, function(data) {
       $.post("/a/honeybadger/aviary_magic.php", { filename: filename, troll_name: name }, function(res) {
         var av_magic = $.parseJSON(res);
-        if(av_magic.success && !memed) {
+        if(av_magic.success) {
           memed = av_magic.memed;
           
           var img = $("<img>").attr("src",memed);
@@ -100,9 +105,7 @@
           
           alert('YO ' + name.toUpperCase() + ' YOU WON $10!!');
           
-          memed = true;
-          
-          $.post("/a/honeybadger/save_aviary.php", { fb_user_id: fb_user_id, name: name, image_url: memed });
+          $.post("/a/honeybadger/save_aviary.php", { name: name, image_url: memed });
         }
       });
     });
