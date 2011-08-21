@@ -22,7 +22,6 @@
 		    fb_oauth_token: response.session.access_token
 		  }, function(data) {
 		    var res = $.parseJSON(data);
-		    console.log(res)
         var results = res.photos[0].tags[0];
         
         var uids = results.uids.slice(0,5);
@@ -30,18 +29,21 @@
         
         for(var i=0; i<uids.length; i++) {
           var uid = uids[i].uid.replace("@facebook.com","");
-          FB.api('/' + uid, function(response) {
-            console.log(response)
-            //names.push()
+          FB.api('/' + uid, function(fb_user) {
+            names.push(fb_user.name);
+            
+            if(names.length == uids.length) hit_twilio(response.session.uid, names);
           })
         }
-        
-        // $.post("callback.php", {
-        //   fb_user_id: response.session.uid,
-        //   names: names
-        // })
 		  })
 		})
+	}
+	
+	function hit_twilio(fb_user_id, names) {
+	  $.post("callback.php", {
+      fb_user_id: response.session.uid,
+      names: names
+    })
 	}
 	
 	$(function() {
