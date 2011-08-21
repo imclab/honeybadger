@@ -1,7 +1,7 @@
 <?php
 
 $filename = date('YmdHis') . '.jpg';
-$result = file_put_contents( 'uploads/' . $filename, file_get_contents('php://input') );
+$result = file_put_contents( '../uploads/' . $filename, file_get_contents('php://input') );
 if (!$result) {
  print "ERROR: Failed to write data to $filename, check permissions\n";
  exit();
