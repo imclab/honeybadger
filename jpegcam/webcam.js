@@ -190,6 +190,7 @@ window.webcam = {
 				break;
 			
 			case 'status':
+			  console.log('holy crap it worked')
 			  this.fire_hook('onCameraStatus', msg.toString());
 			  break;
 
