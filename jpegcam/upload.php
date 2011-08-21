@@ -48,6 +48,6 @@ $url .= 'user_auth=fb_user:' . $user['id'] . ',fb_oauth_token:' . $fb_oauth_toke
 
 $recognize = json_decode(curl_url($url));
 
-print_r($recognize);
+//print_r($recognize);
 
 ?>
