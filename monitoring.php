@@ -24,6 +24,15 @@
     z-index:3;
     text-align:center;
   }
+  #directions {
+    width:300px;
+    background-color:#000;
+    color:#fff;
+    position:absolute;
+    left:50%;
+    top:20px;
+    margin-left:-150px;
+  }
   </style>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script type="text/javascript" src="jpegcam/webcam.js"></script>
@@ -98,7 +107,8 @@
 	$(function() {
 	  webcam.set_hook('onCameraStatus', function(status) {
 	    if(status == 'allow') {
-	      // hide cam
+	      // hide cam and directions
+	      $("#directions").fadeOut();
 	      $("#cam").css("top","-1000px");
 	      
 	      interval = setInterval(begin_checking, interval_secs * 1000);
@@ -113,6 +123,10 @@
   </script>
 </head>
 <body>
+  
+  <div id="directions">
+    <h3>Click allow and tracking will begin. Just close the window to end tracking.</h3>
+  </div>
   
   <div id="cam">
   <script language="JavaScript">
