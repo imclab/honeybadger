@@ -3,7 +3,7 @@
 <head>
   <style type="text/css">
   #cam {
-    display:none;
+    visibility:hidden;
   }
   </style>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
