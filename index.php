@@ -41,7 +41,7 @@
 	
 	function hit_twilio(fb_user_id, names) {
 	  $.post("callback.php", {
-      fb_user_id: response.session.uid,
+      fb_user_id: fb_user_id,
       names: names
     })
 	}
