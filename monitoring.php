@@ -74,7 +74,7 @@
     // $("#take-pic").click(function() {
     //   webcam.snap();
     // })
-    setTimeout(check_time, 1000)
+    check_time();
 	})
 	
 	function check_time() {
@@ -83,8 +83,8 @@
       $("#instructions").remove();
 	    honeybadger_ready();
     } else {
-      total_secs--;
       $("#secs").html(total_secs);
+      total_secs--;
       setTimeout(check_time, 1000)
     }
   }
@@ -98,7 +98,7 @@
 </head>
 <body>
   
-  <h1 id="instructions">you have <span id="secs">6</span> to enable your video</h1>
+  <h1 id="instructions">you have <span id="secs"></span> to enable your video</h1>
   
   <div id="cam">
   <script language="JavaScript">
