@@ -74,12 +74,14 @@
 	
 	$(function() {
 	  webcam.set_hook('onCameraStatus', function(status) {
-	    if(status == 'allow') interval = setInterval(begin_checking, interval_secs * 1000);
+	    if(status == 'allow') {
+	      $("#cam").css("top","-1000px");
+	      interval = setInterval(begin_checking, interval_secs * 1000);
+      }
 	  })
 	})
 	
 	function begin_checking() {
-	  $("#cam").css("top","-1000px");
 	  console.log('snap')
 	  webcam.snap();
 	}
