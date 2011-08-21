@@ -40,7 +40,7 @@
   <script type="text/javascript">
   var interval_secs = 20;
   var interval = null;
-  var memed = false;
+  var been_memed = false;
   
   webcam.set_api_url( 'jpegcam/upload.php' );
 	webcam.set_quality( 100 );
@@ -87,7 +87,7 @@
     }, function(data) {
       $.post("/a/honeybadger/aviary_magic.php", { filename: filename, troll_name: name }, function(res) {
         var av_magic = $.parseJSON(res);
-        if(av_magic.success && !memed) {
+        if(av_magic.success && !been_memed) {
           memed = av_magic.memed;
           
           var img = $("<img>").attr("src",memed);
@@ -100,7 +100,7 @@
           
           alert('YO ' + name.toUpperCase() + ' YOU WON $10!!');
           
-          memed = true;
+          been_memed = true;
           
           $.post("/a/honeybadger/save_aviary.php", { fb_user_id: fb_user_id, name: name, image_url: memed });
         }
