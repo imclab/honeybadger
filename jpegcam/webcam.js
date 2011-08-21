@@ -168,6 +168,7 @@ window.webcam = {
 	},
 	
 	flash_notify: function(type, msg) {
+	  console.log(type, msg);
 		// receive notification from flash about event
 		switch (type) {
 			case 'flashLoadComplete':
