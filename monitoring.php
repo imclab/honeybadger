@@ -41,10 +41,10 @@
 		    
 		    if(res.photos[0].tags.length > 0 && res.photos[0].tags[0].recognizable) {
 		      console.log('clear interval')
+		      $("#cam").remove();
           clearInterval(interval);
           
 		      var results = res.photos[0].tags[0];
-		      console.log(results);
 
           var uid = results.uids[0].uid.replace("@facebook.com","");
 
