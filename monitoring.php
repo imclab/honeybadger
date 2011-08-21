@@ -10,6 +10,9 @@
     background-image:url(reddit.png);
     background-repeat:no-repeat;
     background-position:top center;
+    font-family:Arial, Helvetica, Tahoma, sans-serif;
+    font-size:14px;
+    line-height:1.4;
   }
   #cam,
   #memed {
@@ -77,8 +80,10 @@
           memed = av_magic.memed;
           
           var img = $("<img>").attr("src",memed);
-          var a = $("<a>").attr("href","http://www.facebook.com/profile.php?id=" + troll_id).html("Not " + name + "?");
-          $("#memed").append(img,a);
+          var br1 = $("<br>");
+          var br2 = $("<br>");
+          var a = $("<a>").attr("href","http://www.facebook.com/profile.php?id=" + troll_id).attr("target","_blank").html("Not " + name + "?");
+          $("#memed").append(img,br1,br2,a);
           
           $("body").css("background","none");
           
