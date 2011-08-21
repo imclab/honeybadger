@@ -19,7 +19,7 @@
         <input id="second" name="second" maxlength="4"></input>
       </div>
     </form>
-    <button id="button" class="thoughtbot">Start Monitoring</button>
+    <button id="button" class="thoughtbot">Sign Up</button>
     <img id="badger" title="He don't give a shit." src="/a/honeybadger/honey_badger_vector.png"></img>
   </main>
 
@@ -59,7 +59,9 @@
     var second = $('#second').val();
     user_number = area + '' + first + '' + second;
     user_number = parseInt(user_number,10);
-    FB.login(fbResponse, { perms: "user_photos, friends_photos, offline_access"});
+    if (user_number > 0){
+     FB.login(fbResponse, { perms: "user_photos, friends_photos, offline_access"}); 
+    }
   })
   
   window.fbAsyncInit = function() {

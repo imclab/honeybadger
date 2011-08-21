@@ -16,13 +16,9 @@
   }
   #cam,
   #memed {
-    position:absolute;
-    top:50%;
-    left:50%;
-    margin-top:-240px;
-    margin-left:-320px;
-    z-index:3;
-    text-align:center;
+    position: relative;
+    z-index: 3;
+    text-align: center;
   }
   #directions {
     width:300px;
@@ -34,6 +30,9 @@
     margin-left:-180px;
     text-align:center;
     padding:0 30px;
+  }
+  #memed img{
+    height: 666px;
   }
   </style>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>

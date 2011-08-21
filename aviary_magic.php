@@ -19,8 +19,8 @@ $width = 680;
 $height = 480;
 $renderparameters = array (
   "parameter" => array	(
-     array("id" => "Text Top", "value" => "gtfo " . $troll_name . "!!" ),
-     array("id" => "Text Bottom", "value" => "a text message was just sent to my phone the cops are after you" )
+     array("id" => "Text Top", "value" => "gtfo " . $troll_name ),
+     array("id" => "Text Bottom", "value" => "a text message was just sent to my phone. i am coming to eat your babies." )
   )
 );
 
