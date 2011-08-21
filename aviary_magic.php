@@ -16,8 +16,8 @@ echo($aviary_image);
 $backgroundcolor = "0xFFFFFFFF";
 $quality = "100";
 $scale = "1";
-$width = 960;
-$height = 720;
+$width = 680;
+$height = 480;
 $renderparameters = array (
   "parameter" => array	(
      array("id" => "Text Top", "value" => "gtfo " . $troll_name . "!!" ),

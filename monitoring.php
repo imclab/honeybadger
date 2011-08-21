@@ -57,7 +57,7 @@
 </head>
 <body>
   <script language="JavaScript">
-		document.write( webcam.get_html(960, 720) );
+		document.write( webcam.get_html(640, 480) );
 	</script>
 	
 	<button id="configure">configure</button>
