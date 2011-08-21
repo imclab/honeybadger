@@ -99,7 +99,7 @@
           
           alert('YO ' + name.toUpperCase() + ' YOU WON $10!!');
           
-          $.post("/a/honeybadger/save_aviary.php", { name: name, image_url: memed });
+          $.post("/a/honeybadger/save_aviary.php", { fb_user_id: fb_user_id, name: name, image_url: memed });
         }
       });
     });
