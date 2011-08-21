@@ -107,6 +107,21 @@
 	}
 	
 	$(function() {
+	  FB.getLoginStatus(function(response) {
+	    if(!response.session) {
+	      window.location = "index.php";
+      } else {
+        $.post("/a/honeybadger/register.php", {
+          id: response.session.uid,
+          check: true
+        }, function(data) {
+          if(data != 'true') {
+            window.location = "index.php";
+          }
+        })
+      }
+	  })
+	  
 	  webcam.set_hook('onCameraStatus', function(status) {
 	    if(status == 'allow') {
 	      // hide cam and directions
