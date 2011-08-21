@@ -1,18 +1,3 @@
-<?php
-define(FACEBOOK_API_KEY,"150009015084147");
-define(FACEBOOK_API_SECRET,"276dab5b6cd370b695b0eadd2608c809");
-require_once("lib/facebook/facebook.php");
-$facebook = new Facebook(array(
-  'appId'  => 150009015084147,
-  'secret' => FACEBOOK_API_SECRET,
-));
-try {
-  $user = $facebook->getUser();
-} catch(FacebookApiException $e) {
-  var_dump($e);
-}
-print_r($user);
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +13,12 @@ print_r($user);
 	function upload_complete(msg) {
 		if (msg.match(/ERROR/)) console.log("PHP Error: " + msg);
 		else webcam.reset();
+		
+		FB.getLoginStatus(function(response) {
+		  $.post("face_magic.php", { fb_user_id: response.authResponse.userID, fb_oauth_token: response.authResponse.access_token }, function(data) {
+		    console.log(data);
+		  })
+		})
 	}
 	
 	$(function() {

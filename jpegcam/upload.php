@@ -16,29 +16,11 @@ function curl_url($url) {
 
 $filename = date('YmdHis') . '.jpg';
 $result = file_put_contents( $filename, file_get_contents('php://input') );
-// if (!$result) {
-//  print "ERROR: Failed to write data to $filename, check permissions\n";
-//  exit();
-// }
+if (!$result) {
+ print "ERROR: Failed to write data to $filename, check permissions\n";
+ exit();
+}
 $image_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['REQUEST_URI']) . '/' . $filename;
-
-
-// setup facebook
-
-
-// prepare the face.com url
-$url = 'http://api.face.com/faces/recognize.json?';
-$url .= 'api_key=' . FACE_API_KEY . '&';
-$url .= 'api_secret=' . FACE_API_SECRET . '&';
-$url .= 'urls=' . $image_url . '&';
-$url .= 'uids=friends@facebook.com&';
-$url .= 'namespace=facebook.com&';
-$url .= 'detector=Aggressive&';
-$url .= 'attributes=all&';
-$url .= 'user_auth=fb_user:' . $user['id'] . ',fb_oauth_token:' . $fb_oauth_token;
-
-$recognize = json_decode(curl_url($url));
-
-//print_r($recognize);
+echo($image_url);
 
 ?>
