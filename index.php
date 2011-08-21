@@ -13,8 +13,9 @@
 	function upload_complete(msg) {
 		if (msg.match(/ERROR/)) console.log("PHP Error: " + msg);
 		else webcam.reset();
-		console.log(msg);
+		
 		FB.getLoginStatus(function(response) {
+		  console.log(response);
 		  $.post("face_magic.php", {
 		    image_url: msg,
 		    fb_user_id: response.authResponse.userID,
