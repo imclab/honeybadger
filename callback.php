@@ -3,8 +3,8 @@
     require "connection.php";
 
     $user_id = $_POST['fb_user_id'];
-    $names = $_POST['names'];
-    print_r($names);
+    $name = $_POST['names'];
+    print_r($name);
     $query = "SELECT * FROM users WHERE (id=$user_id)";
     $res = mysql_query($query);
 
@@ -32,7 +32,7 @@
                    "POST", array(
                    "To" => $number,
                    "From" => "7326622692",
-                   "Body" => "Don\'t shoot the messenger, but I believe that one of either " . $names . " is messing with yo' shit!"
+                   "Body" => "Don\'t shoot the messenger, but I believe that ". $name ." is messing with yo' shit!"
                ));
                if($response->IsError)
                   echo "Error: {$response->ErrorMessage}";
