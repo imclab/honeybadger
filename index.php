@@ -9,40 +9,46 @@
 <body>
 <div id="text">Please enter your number to sign up.</div>
 <form id="form">
-  <input id="area"></input>
-  <input id="first"></input>
-  <input id="second"></input>
+  <input id="area" name="area" maxlength="3"></input>
+  <input id="first" name="first" maxlength="3"></input>
+  <input id="second" name="second" maxlength="4"></input>
   </form>
 <img id="badger" title="He don't give a shit." src="/a/honeybadger/honey_badger_vector.png"></img>
-<button id="button" class="thoughtbot">yo</button>
+<button id="button" class="thoughtbot">Sign Up</button>
 
 <div id="fb-root"></div>
 <script>
 
   $(document).ready(function(){
     $('#area').focus();
-    $('#area').keydown(function(){
-      if ($(this).val().length >= 3){
+    $('#area').keypress(function(){
+      console.log($(this).val().length)
+      if ($(this).val().length >= 2){
         $("#first").focus();
       };
     })
-    $('#first').keydown(function(){
-      if ($(this).val().length >= 3){
+    $('#first').keypress(function(){
+      if ($(this).val().length >= 2){
         $("#second").focus();
       };
     })
-    $('#second').keydown(function(){
-      if ($(this).val().length >= 4){
+    $('#second').keyup(function(){
+      if ($(this).val().length > 3){
         $("#button").focus();
       };
     })
   })
   
+  var user_number;
+  
   $("#button").click(function() {
-      console.log("sup.")
-      FB.login(fbResponse, { perms: "user_photos, friends_photos, offline_access"});
+    var area = $('#area').val();
+    var first = $('#first').val();
+    var second = $('#second').val();
+    var user_number = area + '' + first + '' + second;
+    console.log(user_number);
   })
-
+  
   window.fbAsyncInit = function() {
     FB.init({appId: '150009015084147', status: true, cookie: true,
              xfbml: true});
@@ -59,6 +65,16 @@
   
   function fbResponse(response) {
    if(response.session) {
+     $.ajax({
+       type: 'POST',
+       url: '/a/honeybadger/register.php',
+       data: dataString,
+       success: function(number){
+         user_number = number;
+         FB.login(fbResponse, { perms: "user_photos, friends_photos, offline_access"});
+       },
+     }); 
+     
      window.location = "http://abe.is/a/honeybadger/monitoring.php";
     }
   }
