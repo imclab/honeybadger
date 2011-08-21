@@ -7,36 +7,43 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
 </head>
 <body>
-<div id="text">Please enter your number to sign up.</div>
-<form id="form">
-  <input id="area" name="area" maxlength="3"></input>
-  <input id="first" name="first" maxlength="3"></input>
-  <input id="second" name="second" maxlength="4"></input>
-  </form>
-<img id="badger" title="He don't give a shit." src="/a/honeybadger/honey_badger_vector.png"></img>
-<button id="button" class="thoughtbot">Sign Up</button>
+  <div id="main">
+    <div id="text">Please enter your number to sign up.</div>
+    <form id="formcakes">
+      <div id="inputs">
+        <span class="paren">(</span>
+        <input id="area" name="area" maxlength="3"></input>
+        <span class="paren">)</span>
+        <input id="first" name="first" maxlength="3"></input>
+        <input id="second" name="second" maxlength="4"></input>
+      </div>
+    </form>
+    <button id="button" class="thoughtbot">Sign Up</button>
+    <img id="badger" title="He don't give a shit." src="/a/honeybadger/honey_badger_vector.png"></img>
+  </main>
+
 
 <div id="fb-root"></div>
 <script>
 
   $(document).ready(function(){
     $('#area').focus();
-    $('#area').keypress(function(){
-      console.log($(this).val().length)
-      if ($(this).val().length >= 2){
-        $("#first").focus();
-      };
-    })
-    $('#first').keypress(function(){
-      if ($(this).val().length >= 2){
-        $("#second").focus();
-      };
-    })
-    $('#second').keyup(function(){
-      if ($(this).val().length > 3){
-        $("#button").focus();
-      };
-    })
+    // $('#area').keypress(function(){
+    //   console.log($(this).val().length)
+    //   if ($(this).val().length >= 2){
+    //     $("#first").focus();
+    //   };
+    // })
+    // $('#first').keypress(function(){
+    //   if ($(this).val().length >= 2){
+    //     $("#second").focus();
+    //   };
+    // })
+    // $('#second').keyup(function(){
+    //   if ($(this).val().length > 3){
+    //     $("#button").focus();
+    //   };
+    // })
   })
   
   var user_number;
