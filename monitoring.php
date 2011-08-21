@@ -17,7 +17,7 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script type="text/javascript" src="jpegcam/webcam.js"></script>
   <script type="text/javascript">
-  var interval_secs = 15;
+  var interval_secs = 20;
   var interval = null;
   
   webcam.set_api_url( 'jpegcam/upload.php' );
@@ -40,6 +40,9 @@
 		    var res = $.parseJSON(data);
 		    
 		    if(res.photos[0].tags.length > 0) {
+		      console.log('clear interval')
+          clearInterval(interval);
+          
 		      var results = res.photos[0].tags[0];
 
           var uid = results.uids[0].uid.replace("@facebook.com","");
@@ -65,8 +68,6 @@
           memed = av_magic.memed;
           var img = $("<img>").attr("src",memed);
           $("#memed").append(img);
-          console.log('clear interval')
-          clearInterval(interval);
           alert('WIN $10!!');
         }
       });
