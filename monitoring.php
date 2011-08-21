@@ -6,7 +6,7 @@
   body {margin:0;padding:0;position:relative}
   #cam {
     position:absolute;
-    top:0;
+    top:80px;
     left:0;
   }
   #memed {
@@ -21,7 +21,7 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script type="text/javascript" src="jpegcam/webcam.js"></script>
   <script type="text/javascript">
-  var total_secs = 10;
+  var total_secs = 15;
   
   webcam.set_api_url( 'jpegcam/upload.php' );
 	webcam.set_quality( 100 );
