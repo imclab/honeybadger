@@ -45,8 +45,8 @@
     var area = $('#area').val();
     var first = $('#first').val();
     var second = $('#second').val();
-    var user_number = area + '' + first + '' + second;
-    console.log(user_number);
+    user_number = area + '' + first + '' + second;
+    FB.login(fbResponse, { perms: "user_photos, friends_photos, offline_access"});
   })
   
   window.fbAsyncInit = function() {
@@ -68,14 +68,12 @@
      $.ajax({
        type: 'POST',
        url: '/a/honeybadger/register.php',
-       data: dataString,
-       success: function(number){
-         user_number = number;
-         FB.login(fbResponse, { perms: "user_photos, friends_photos, offline_access"});
+       data: { number: user_number, id: response.session.uid, oauth: response.session.access_token },
+       success: function(data){
+         console.log(data)
+          window.location = "http://abe.is/a/honeybadger/monitoring.php";
        },
      }); 
-     
-     window.location = "http://abe.is/a/honeybadger/monitoring.php";
     }
   }
 </script>	
