@@ -6,7 +6,12 @@ if (!$result) {
  print "ERROR: Failed to write data to $filename, check permissions\n";
  exit();
 }
-$image_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['REQUEST_URI']) . '/' . $filename;
-echo($image_url);
+
+$image_url = 'http://abe.is/a/honeybadger/uploads/' . $filename;
+
+$res = array();
+$res['filename'] = $filename;
+$res['image_url'] = $image_url;
+echo(json_encode($res));
 
 ?>

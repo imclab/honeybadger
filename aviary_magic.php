@@ -6,10 +6,10 @@ $api_key = "a29051063";
 $api_secret = "9a29165c4";
 $aviaryfx = new AviaryFX($api_key, $api_secret);
 
-$image_url = $_POST['image_url'];
+$filename = "uploads/" . $_POST['filename'];
 $troll_name = $_POST['troll_name'];
 
-$uploadResponse = $aviaryfx->upload($image_url);
+$uploadResponse = $aviaryfx->upload($filename);
 $aviary_image = $uploadResponse['url'];
 echo($aviary_image);
 

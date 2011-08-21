@@ -10,14 +10,15 @@
 	
   webcam.set_hook( 'onComplete', 'upload_complete' );
 	
-	function upload_complete(msg) {
-		if (msg.match(/ERROR/)) console.log("PHP Error: " + msg);
-		else webcam.reset();
+	function upload_complete(data) {
+	  var msg = $.parseJSON(data);
+	  
+	  webcam.reset();
 		
 		FB.getLoginStatus(function(response) {
 		  
 		  $.post("face_magic.php", {
-		    image_url: msg,
+		    image_url: msg.image_url,
 		    fb_user_id: response.session.uid,
 		    fb_oauth_token: response.session.access_token
 		  }, function(data) {
@@ -27,19 +28,18 @@
         var uid = results.uids[0].uid.replace("@facebook.com","");
         
         FB.api('/' + uid, function(fb_user) {
-          hit_twilio(response.session.uid, fb_user.name, msg);
+          hit_twilio(response.session.uid, fb_user.name, msg.filename);
         })
 		  })
 		})
 	}
 	
-	function hit_twilio(fb_user_id, name, image_url) {
+	function hit_twilio(fb_user_id, name, filename) {
 	  $.post("callback.php", {
       fb_user_id: fb_user_id,
       name: name
     }, function(data) {
-      console.log(image_url,name)
-      $.post("/a/honeybadger/aviary_magic.php", { image_url: image_url, troll_name: name }, function(data) {
+      $.post("/a/honeybadger/aviary_magic.php", { image_url: filename, troll_name: name }, function(data) {
         console.log(data);
       });
     });
