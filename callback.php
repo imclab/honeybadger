@@ -4,7 +4,7 @@
 
     $user_id = $_POST['fb_user_id'];
     $name = $_POST['name'];
-    
+    print_r($name);
     $query = "SELECT * FROM users WHERE (id=$user_id)";
     $res = mysql_query($query);
 
@@ -13,7 +13,6 @@
       $phone = $row[2];
   	}
 
- 
     // twilio REST API version
     $ApiVersion = "2010-04-01";
    
