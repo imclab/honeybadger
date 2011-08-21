@@ -20,11 +20,11 @@ $height = 480;
 $renderparameters = array (
   "parameter" => array	(
      array("id" => "Text Top", "value" => "gtfo " . $troll_name . "!!" ),
-     array("id" => "Text Bottom", "value" => "a text was just sent to my phone the cops are after you" )
+     array("id" => "Text Bottom", "value" => "a text message was just sent to my phone the cops are after you" )
   )
 );
 
-$renderResponse = $aviaryfx->render($backgroundcolor, 'jpg', $quality, $scale, $aviary_image, 27, $width, $height, $renderparameters);
+$renderResponse = $aviaryfx->render($backgroundcolor, 'jpg', $quality, $scale, $aviary_image, 43, $width, $height, $renderparameters);
 $memed = $renderResponse['url'];
 
 $res = array();
