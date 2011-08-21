@@ -29,8 +29,6 @@ $url .= 'detector=Aggressive&';
 $url .= 'attributes=all&';
 $url .= 'user_auth=fb_user:' . $fb_user_id . ',fb_oauth_token:' . $fb_oauth_token;
 
-$recognize = json_decode(curl_url($url));
-
-print_r($recognize);
+echo(curl_url($url));
 
 ?>

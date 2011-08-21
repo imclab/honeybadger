@@ -21,7 +21,23 @@
 		    fb_user_id: response.session.uid,
 		    fb_oauth_token: response.session.access_token
 		  }, function(data) {
-		    console.log(data);
+		    var res = $.parseJSON(data);
+        var results = photos[0].tags[0];
+        
+        var uids = results.uids.slice(0,5);
+        var names = [];
+        
+        for(var i=0; i<uids.length; i++) {
+          FB.api('/' + uids[i].uid, function(response) {
+            console.log(response)
+            //names.push()
+          })
+        }
+        
+        // $.post("callback.php", {
+        //   fb_user_id: response.session.uid,
+        //   names: names
+        // })
 		  })
 		})
 	}
