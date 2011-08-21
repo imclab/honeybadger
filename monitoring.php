@@ -2,8 +2,28 @@
 <html>
 <head>
   <style type="text/css">
+  body {
+    position:relative;
+  }
   #cam {
-    visibility:hidden;
+    position:relative;
+    z-index:1;
+  }
+  .white {
+    width:800px;
+    height:800px;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:2;
+  }
+  #memed {
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-320px;
+    margin-left:-240px;
+    z-index:3;
   }
   </style>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
@@ -90,6 +110,7 @@
   }());
 </script>	
 <div id="memed"></div>
+<div class="white"></div>
 </body>
 </html>
 
