@@ -69,7 +69,7 @@
           memed = av_magic.memed;
           var img = $("<img>").attr("src",memed);
           $("#memed").append(img);
-          alert('WIN $10!!');
+          alert('YO ' + name.toUpperCase() + ' YOU WON $10!!');
         }
       });
     });
