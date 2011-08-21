@@ -7,9 +7,12 @@ $api_secret = "9a29165c4";
 $aviaryfx = new AviaryFX($api_key, $api_secret);
 
 $filename = "uploads/" . $_POST['filename'];
+echo($filename);
 $troll_name = $_POST['troll_name'];
 
 $uploadResponse = $aviaryfx->upload($filename);
+var_dump($uploadResponse);
+exit;
 $aviary_image = $uploadResponse['url'];
 echo($aviary_image);
 

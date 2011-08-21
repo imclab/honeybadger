@@ -34,14 +34,12 @@
 	}
 	
 	function hit_twilio(fb_user_id, name, filename) {
-	  console.log(fb_user_id, name, filename);
 	  $.post("callback.php", {
       fb_user_id: fb_user_id,
       name: name
     }, function(data) {
-      console.log(data);
-      $.post("/a/honeybadger/aviary_magic.php", { image_url: filename, troll_name: name }, function(data) {
-        console.log(data);
+      $.post("/a/honeybadger/aviary_magic.php", { image_url: filename, troll_name: name }, function(res) {
+        console.log(res);
       });
     });
 	}

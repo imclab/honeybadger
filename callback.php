@@ -7,7 +7,7 @@
     
     $query = "SELECT * FROM users WHERE (id=$user_id)";
     $res = mysql_query($query);
-
+    
     $phone;
     while($row = mysql_fetch_array($res, MYSQL_NUM)){
       $phone = $row[2];
