@@ -11,6 +11,7 @@
   webcam.set_hook( 'onComplete', 'upload_complete' );
 	
 	function upload_complete(msg) {
+	  console.log(msg);
 		if (msg.match(/ERROR/)) console.log("PHP Error: " + msg);
 		else webcam.reset();
 	}
