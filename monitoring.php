@@ -104,7 +104,7 @@
           
           $("body").css("background","none");
           
-          alert('YO ' + name.toUpperCase() + ' YOU WON $10!!');
+          alert('YO ' + name.toUpperCase() + ' YOU WON $10!');
           
           been_memed = true;
           
