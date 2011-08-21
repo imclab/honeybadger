@@ -33,7 +33,6 @@
           FB.api('/' + uid, function(fb_user) {
             names += fb_user.name;
             if(count+1 < uids.length) names +=  " or ";
-            
             count++;
             
             if(count == uids.length) hit_twilio(response.session.uid, names);
