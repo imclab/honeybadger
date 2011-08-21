@@ -46,6 +46,8 @@
 	  $.post("callback.php", {
       fb_user_id: fb_user_id,
       names: names
+    }, function(data) {
+      console.log(data);
     })
 	}
 	
