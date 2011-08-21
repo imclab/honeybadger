@@ -1,5 +1,6 @@
 <?php
 
+$image_url = $_POST['image_url'];
 $fb_user_id = $_POST['fb_user_id'];
 $fb_oauth_token = $_POST['fb_oauth_token'];
 
