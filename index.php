@@ -8,6 +8,7 @@
 </head>
 <body>
   <div id="main">
+    <div id="login">Login</div>
     <div id="text">Please enter your number to sign up.</div>
     <form id="formcakes">
       <div id="inputs">
@@ -48,20 +49,22 @@
   
   var user_number;
   
+  $('#login').click(function(){
+    FB.getLoginStatus(fbResponseLogIn);
+  })
+  
   $("#button").click(function() {
     var area = $('#area').val();
     var first = $('#first').val();
     var second = $('#second').val();
     user_number = area + '' + first + '' + second;
+    user_number = parseInt(user_number,10);
     FB.login(fbResponse, { perms: "user_photos, friends_photos, offline_access"});
   })
   
   window.fbAsyncInit = function() {
     FB.init({appId: '150009015084147', status: true, cookie: true,
              xfbml: true});
-    FB.Event.subscribe('auth.login', function () {
-             window.location = "http://abe.is/a/honeybadger/monitoring.php";
-        });
   };
   (function() {
     var e = document.createElement('script'); e.async = true;
@@ -75,10 +78,26 @@
      $.ajax({
        type: 'POST',
        url: '/a/honeybadger/register.php',
-       data: { number: user_number, id: response.session.uid, oauth: response.session.access_token },
-       success: function(data){
-         console.log(data)
+       data: { number: user_number, id: response.session.uid, oauth: response.session.access_token, check: false },
+       success: function(){
           window.location = "http://abe.is/a/honeybadger/monitoring.php";
+       },
+     }); 
+    }
+  }
+  
+  function fbResponseLogIn(response) {
+   if(response.session) {
+     $.ajax({
+       type: 'POST',
+       url: '/a/honeybadger/register.php',
+       data: { number: user_number, id: response.session.uid, oauth: response.session.access_token, check: true },
+       success: function(data){
+         if(data){
+          window.location = "http://abe.is/a/honeybadger/monitoring.php"; 
+         } else {
+           alert("We can't seem to find you in our system. :/")
+         }
        },
      }); 
     }
