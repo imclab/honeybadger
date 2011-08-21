@@ -19,6 +19,7 @@
     margin-top:-240px;
     margin-left:-320px;
     z-index:3;
+    text-align:center;
   }
   </style>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
@@ -56,7 +57,7 @@
           var uid = results.uids[0].uid.replace("@facebook.com","");
 
           FB.api('/' + uid, function(fb_user) {
-            hit_twilio(response.session.uid, fb_user.name, file.filename);
+            hit_twilio(response.session.uid, uid, fb_user.name, file.filename);
           })
 		    } else {
 		      console.log('nobody in the frame')
@@ -65,7 +66,7 @@
 		})
 	}
 	
-	function hit_twilio(fb_user_id, name, filename) {
+	function hit_twilio(fb_user_id, troll_id, name, filename) {
 	  $.post("callback.php", {
       fb_user_id: fb_user_id,
       name: name
@@ -74,8 +75,10 @@
         var av_magic = $.parseJSON(res);
         if(av_magic.success) {
           memed = av_magic.memed;
+          
           var img = $("<img>").attr("src",memed);
-          $("#memed").append(img);
+          var a = $("<a>").attr("href","http://www.facebook.com/profile.php?id=" + troll_id).html("Not " + name + "?");
+          $("#memed").append(img,a);
           
           $("body").css("background","none");
           
