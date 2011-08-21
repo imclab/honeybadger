@@ -19,7 +19,7 @@
         <input id="second" name="second" maxlength="4"></input>
       </div>
     </form>
-    <button id="button" class="thoughtbot">Sign Up</button>
+    <button id="button" class="thoughtbot">Start Monitoring</button>
     <img id="badger" title="He don't give a shit." src="/a/honeybadger/honey_badger_vector.png"></img>
   </main>
 
@@ -93,13 +93,15 @@
        url: '/a/honeybadger/register.php',
        data: { number: user_number, id: response.session.uid, oauth: response.session.access_token, check: true },
        success: function(data){
-         if(data){
+         if(data == 'true'){
           window.location = "http://abe.is/a/honeybadger/monitoring.php"; 
          } else {
            alert("We can't seem to find you in our system. :/")
          }
        },
      }); 
+    } else {
+      FB.login(fbResponseLogIn, {perms: "user_photos, friends_photos, offline_access"});
     }
   }
 </script>	
