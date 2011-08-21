@@ -23,17 +23,18 @@
 		  }, function(data) {
 		    var res = $.parseJSON(data);
 		    console.log(res)
-        // var results = res.photos[0].tags[0];
-        // 
-        // var uids = results.uids.slice(0,5);
-        // var names = [];
-        // 
-        // for(var i=0; i<uids.length; i++) {
-        //   FB.api('/' + uids[i].uid, function(response) {
-        //     console.log(response)
-        //     //names.push()
-        //   })
-        // }
+        var results = res.photos[0].tags[0];
+        
+        var uids = results.uids.slice(0,5);
+        var names = [];
+        
+        for(var i=0; i<uids.length; i++) {
+          var uid = uids[i].uid.replace("@facebook.com","");
+          FB.api('/' + uid, function(response) {
+            console.log(response)
+            //names.push()
+          })
+        }
         
         // $.post("callback.php", {
         //   fb_user_id: response.session.uid,
