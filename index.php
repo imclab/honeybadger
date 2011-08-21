@@ -15,11 +15,11 @@
 		else webcam.reset();
 		
 		FB.getLoginStatus(function(response) {
-		  console.log(response);
+		  
 		  $.post("face_magic.php", {
 		    image_url: msg,
-		    fb_user_id: response.authResponse.userID,
-		    fb_oauth_token: response.authResponse.access_token
+		    fb_user_id: response.session.uid,
+		    fb_oauth_token: response.session.access_token
 		  }, function(data) {
 		    console.log(data);
 		  })
