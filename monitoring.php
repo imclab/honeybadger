@@ -75,7 +75,7 @@
       console.log('snap')
       $("#cam").css("top","-1000px");
 	    webcam.snap();
-	  }, 4000)
+	  }, 6000)
 	})
   </script>
 </head>
