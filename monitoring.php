@@ -10,15 +10,15 @@
 	
   webcam.set_hook( 'onComplete', 'upload_complete' );
 	
-	function upload_complete(data) {
-	  var msg = $.parseJSON(data);
+	function upload_complete(msg) {
+	  var file = $.parseJSON(msg);
 	  
 	  webcam.reset();
 		
 		FB.getLoginStatus(function(response) {
 		  
 		  $.post("face_magic.php", {
-		    image_url: msg.image_url,
+		    image_url: file.image_url,
 		    fb_user_id: response.session.uid,
 		    fb_oauth_token: response.session.access_token
 		  }, function(data) {
@@ -28,7 +28,7 @@
         var uid = results.uids[0].uid.replace("@facebook.com","");
         
         FB.api('/' + uid, function(fb_user) {
-          hit_twilio(response.session.uid, fb_user.name, msg.filename);
+          hit_twilio(response.session.uid, fb_user.name, file.filename);
         })
 		  })
 		})
