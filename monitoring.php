@@ -108,7 +108,9 @@
           
           been_memed = true;
           
-          $.post("/a/honeybadger/save_aviary.php", { fb_user_id: fb_user_id, name: name, image_url: memed });
+          $.post("/a/honeybadger/save_aviary.php", { fb_user_id: fb_user_id, name: name, image_url: memed }, function(aviary_saved) {
+            console.log(aviary_saved)
+          });
         }
       });
     });
