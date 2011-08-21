@@ -107,22 +107,6 @@
 	}
 	
 	$(function() {
-	  FB.getLoginStatus(function(response) {
-	    console.log(response)
-	    if(!response.session) {
-	      window.location = "index.php";
-      } else {
-        $.post("/a/honeybadger/register.php", {
-          id: response.session.uid,
-          check: true
-        }, function(data) {
-          if(data != 'true') {
-            window.location = "index.php";
-          }
-        })
-      }
-	  })
-	  
 	  webcam.set_hook('onCameraStatus', function(status) {
 	    if(status == 'allow') {
 	      // hide cam and directions
@@ -160,6 +144,22 @@
   window.fbAsyncInit = function() {
     FB.init({appId: '150009015084147', status: true, cookie: true,
              xfbml: true});
+    
+   FB.getLoginStatus(function(response) {
+	    console.log(response)
+	    if(!response.session) {
+	      window.location = "index.php";
+     } else {
+       $.post("/a/honeybadger/register.php", {
+         id: response.session.uid,
+         check: true
+       }, function(data) {
+         if(data != 'true') {
+           window.location = "index.php";
+         }
+       })
+     }
+	  })
   };
   (function() {
     var e = document.createElement('script'); e.async = true;
