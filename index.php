@@ -1,3 +1,12 @@
+<?php
+include_once("../lib/facebook/facebook.php");
+$facebook = new Facebook(array(
+  'appId'  => 150009015084147,
+  'secret' => FACEBOOK_API_SECRET,
+));
+$user = $facebook->getUser();
+print_r($user);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +20,6 @@
   webcam.set_hook( 'onComplete', 'upload_complete' );
 	
 	function upload_complete(msg) {
-	  console.log(msg);
 		if (msg.match(/ERROR/)) console.log("PHP Error: " + msg);
 		else webcam.reset();
 	}

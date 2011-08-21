@@ -27,13 +27,7 @@ $image_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['REQUEST_URI']
 
 
 // setup facebook
-include_once("../lib/facebook/facebook.php");
-$facebook = new Facebook(array(
-  'appId'  => 150009015084147,
-  'secret' => FACEBOOK_API_SECRET,
-));
-$user = $facebook->getUser();
-print_r($user);
+
 
 // prepare the face.com url
 $url = 'http://api.face.com/faces/recognize.json?';
