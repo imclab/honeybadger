@@ -8,8 +8,8 @@
 </head>
 <body>
   <div id="main">
-    <div id="login">Login</div>
-    <div id="text">Please enter your number to sign up.</div>
+    <!-- <div id="login">Login</div> -->
+    <div id="text">Please enter your number to begin.</div>
     <form id="formcakes">
       <div id="inputs">
         <span class="paren">(</span>
@@ -19,7 +19,7 @@
         <input id="second" name="second" maxlength="4"></input>
       </div>
     </form>
-    <button id="button" class="thoughtbot">Sign Up</button>
+    <button id="button" class="thoughtbot">Submit</button>
     <img id="badger" title="He don't give a shit." src="/a/honeybadger/honey_badger_vector.png"></img>
   </main>
 
@@ -60,13 +60,13 @@
     user_number = area + '' + first + '' + second;
     user_number = parseInt(user_number,10);
     if (user_number > 0){
-     FB.login(fbResponse, { perms: "user_photos, friends_photos, offline_access"}); 
+     FB.login(fbResponse, { scope: "user_photos, friends_photos, offline_access"}); 
     }
   })
   
   window.fbAsyncInit = function() {
     FB.init({appId: '150009015084147', status: true, cookie: true,
-             xfbml: true});
+             xfbml: true, oauth: true});
   };
   (function() {
     var e = document.createElement('script'); e.async = true;
@@ -76,11 +76,11 @@
   }());
   
   function fbResponse(response) {
-   if(response.session) {
+   if(response.authResponse) {
      $.ajax({
        type: 'POST',
        url: '/a/honeybadger/register.php',
-       data: { number: user_number, id: response.session.uid, oauth: response.session.access_token, check: false },
+       data: { number: user_number, id: response.authResponse.uid, oauth: response.authResponse.access_token, check: false },
        success: function(){
           window.location = "http://abe.is/a/honeybadger/monitoring.php";
        },
@@ -89,11 +89,11 @@
   }
   
   function fbResponseLogIn(response) {
-   if(response.session) {
+   if(response.authResponse) {
      $.ajax({
        type: 'POST',
        url: '/a/honeybadger/register.php',
-       data: { number: user_number, id: response.session.uid, oauth: response.session.access_token, check: true },
+       data: { number: user_number, id: response.authResponse.uid, oauth: response.authResponse.access_token, check: true },
        success: function(data){
          if(data == 'true'){
           window.location = "http://abe.is/a/honeybadger/monitoring.php"; 
@@ -103,7 +103,7 @@
        },
      }); 
     } else {
-      FB.login(fbResponseLogIn, {perms: "user_photos, friends_photos, offline_access"});
+      FB.login(fbResponseLogIn, {scope: "user_photos, friends_photos, offline_access"});
     }
   }
 </script>	

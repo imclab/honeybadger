@@ -47,6 +47,7 @@
   var interval_secs = 20;
   var interval = null;
   var been_memed = false;
+  var currentUser;
   
   webcam.set_api_url( 'jpegcam/upload.php' );
 	webcam.set_quality( 100 );
@@ -60,25 +61,26 @@
 	  webcam.reset();
 		
 		FB.getLoginStatus(function(response) {
+		  currentUser = response.authResponse.userID;
 		  $.post("face_magic.php", {
 		    image_url: file.image_url,
-		    fb_user_id: response.session.uid,
-		    fb_oauth_token: response.session.access_token
+		    fb_user_id: response.authResponse.userID,
+		    fb_oauth_token: response.authResponse.accessToken
 		  }, function(data) {
 		    var res = $.parseJSON(data);
-		    
 		    if(res.photos[0].tags.length > 0 && res.photos[0].tags[0].recognizable) {
-		      console.log('clear interval')
-		      $("#cam").remove();
-          clearInterval(interval);
-          
 		      var results = res.photos[0].tags[0];
-
           var uid = results.uids[0].uid.replace("@facebook.com","");
-
-          FB.api('/' + uid, function(fb_user) {
-            hit_twilio(response.session.uid, uid, fb_user.name, file.filename);
-          })
+          if(uid != currentUser){
+            $("#cam").remove();
+            clearInterval(interval);
+            console.log('interval cleared')
+            FB.api('/' + uid, function(fb_user) {
+              hit_twilio(response.authResponse.userID, uid, fb_user.name, file.filename);
+            })
+          } else {
+            console.log("it's you!")
+          }
 		    } else {
 		      console.log('nobody in the frame')
 		    }
@@ -104,7 +106,7 @@
           
           $("body").css("background","none");
           
-          alert('YO ' + name.toUpperCase() + ' YOU WON $3,550!');
+          alert('YO ' + name.toUpperCase() + ' YOU WON $4000!');
           
           been_memed = true;
           
@@ -153,17 +155,15 @@
 <script>
   window.fbAsyncInit = function() {
     FB.init({appId: '150009015084147', status: true, cookie: true,
-             xfbml: true});
+             xfbml: true, oauth: true});
     
    FB.getLoginStatus(function(response) {
-	    if(!response.session) {
-	      window.location = "index.php";
-     } else {
+	    if(response.status === 'connected') {
        $.post("/a/honeybadger/register.php", {
-         id: response.session.uid,
+         id: response.authResponse.userID,
          check: true
        }, function(data) {
-         if(data != 'true') {
+         if(response.status != 'connected') {
            window.location = "index.php";
          }
        })
